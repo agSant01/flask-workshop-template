@@ -1,0 +1,18 @@
+{
+    "users": [
+        {
+            "firstName": "John",
+            "lastName": "Doe",
+            "address": "Bat Ave. #24",
+            "city": "Gotham",
+            "state": "DC"
+        },
+        {
+            "firstName": "Mary",
+            "lastName": "Jane",
+            "address": "Red Ave. #97",
+            "city": "NYC",
+            "state": "MV"
+        }
+    ]
+}

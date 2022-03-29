@@ -1,0 +1,27 @@
+# For more documentation and environment variables read: https://hub.docker.com/_/postgres
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+    db:
+        image: postgres
+        restart: always
+        environment:
+            POSTGRES_USER: myuser
+            POSTGRES_PASSWORD: mypassword
+            POSTGRES_DB: class_project
+        ports:
+            - 5432:5432
+        volumes:
+            - '/var/run/postgres/postgres.sock:/var/run/postgres/postgres.sock'
+            - 'dbdata:/var/lib/postgresql/data'
+
+    adminer:
+        image: adminer
+        restart: always
+        ports: # docs: https://docs.docker.com/compose/compose-file/compose-file-v3/#ports
+            # HOST:CONTAINER
+            - 8080:8080
+
+volumes:
+    dbdata:

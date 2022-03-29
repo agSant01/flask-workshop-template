@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+  <users>
+    <firstName>John</firstName>
+    <lastName>Doe</lastName>
+    <address>Bat Ave. #24</address>
+    <city>Gotham</city>
+    <state>DC</state>
+  </users>
+  <users>
+    <firstName>Mary</firstName>
+    <lastName>Jane</lastName>
+    <address>Red Ave. #97</address>
+    <city>NYC</city>
+    <state>MV</state>
+  </users>
+</root>

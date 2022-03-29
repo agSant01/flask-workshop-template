@@ -1,0 +1,78 @@
+Enum user_role {
+    admin
+    customer
+}
+
+Table user  {
+    userId int [pk, increment]
+    firstName varchar(40) [not null]
+    lastName varchar(40) [not null]
+    email varchar(100) [not null, unique]
+    password text [not null]
+    role user_role [not null]
+    created timestamp [not null, default: `now()`]
+    updated timestamp [not null, default: `now()`]
+    deleted timestamp [null]
+}
+
+Table provider {
+    providerId int [pk, increment]
+    contactEmail varchar(100) [null]
+    contactPhone varchar(30) [null]
+    providerName text [not null]
+    countryName varchar(40) [not null]
+    countryCode varchar(3) [not null]
+    city varchar(40) [not null]
+    cityCode varchar(5) [not null]
+    zipCode varchar(10) [not null]
+    created timestamp [not null, default: `now()`]
+    updated timestamp [not null, default: `now()`]
+    deleted timestamp [null]
+}
+
+Table product {
+    productId int [pk, increment]
+    productName text [not null]
+    price float [not null]
+    providerId int [null, ref: < provider.providerId] // one-to-many
+    createdBy int [not null, ref: > user.userId] // many-to-one
+    isDisplay bool [not null, note: 'Is available for client purchase']
+    created timestamp [not null, default: `now()`]
+    updated timestamp [not null, default: `now()`]
+    deleted timestamp [null]
+}
+
+Table order {
+    orderId int [pk, increment]
+    userId int [not null, ref: > user.userId]
+    created timestamp [not null, default: `now()`]
+    deleted timestamp [null]
+}
+
+Table order_item {
+    oiId int [pk, increment]
+    orderId int [not null, ref: - order.orderId]
+    productId int [not null]
+    quantity int [not null]
+    price float [not null]
+}
+
+Enum payment_type {
+    visa
+    amex
+    discover
+}
+
+Table payment {
+    paymentId int [pk, increment]
+    orderId int [not null, ref: > order.orderId]
+    paymentType payment_type [not null]
+    card_number varchar(30) [not null]
+    expirationMonth varchar(2) [not null]
+    expirationYear varchar(4) [not null]
+    card_holder_name varchar(40) [not null]
+    success bool [not null]
+    serviceResponse text [null]
+    serviceResponseCode varchar(80) [null]
+    created timestamp [not null, default: `now()`]
+}
