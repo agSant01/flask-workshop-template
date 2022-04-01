@@ -1,6 +1,6 @@
-from db import get_connection
+from db import Connection, get_connection
 
 
 class BaseModel:
     def __init__(self) -> None:
-        self._connection = get_connection()
+        self._connection: Connection = get_connection()

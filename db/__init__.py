@@ -3,6 +3,7 @@ from flask import g
 
 import psycopg2
 from psycopg2 import pool
+from psycopg2.extensions import cursor as Cursor, connection as Connection
 
 
 def __config():
@@ -29,8 +30,8 @@ def __config():
 
 
 __pool = psycopg2.pool.ThreadedConnectionPool(
-    2,
-    20,
+    2,  # start with only 2 connection
+    20,  # only a maximo de 20 connection
     **__config(),
 )
 
