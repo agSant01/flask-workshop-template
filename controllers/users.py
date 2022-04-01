@@ -19,6 +19,5 @@ class UserController:
     def filter_user_by_first_name(self, first_name: str):
         return self.user_model.filter_by_keyword({"first_name": first_name})
 
-def get_user_info(id: int):
-    user_model = UserModel()
-    return user_model.get_user_by_id(id)
+    def filter_users(self, filter_params: dict):
+        return self.user_model.filter_by_keyword(filter_params)
