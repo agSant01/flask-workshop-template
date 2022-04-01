@@ -1,5 +1,7 @@
 # For more documentation and environment variables read: https://hub.docker.com/_/postgres
 # Use postgres/example user/password credentials
+
+#RUN WITH: docker stack deploy -c <this file name> <process name: you decide>
 version: '3.1'
 
 services:

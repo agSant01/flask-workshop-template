@@ -57,7 +57,6 @@ def register_error_handlers(app):
 
 
 # register all routes under controllers/
-# register_api(app)
 # register api error handlers
 register_error_handlers(app)
 
@@ -70,11 +69,6 @@ def return_connection(_):
             put_connection(g.db)
         except Exception as e:
             print("[DB-ERROR] putting connection...", e)
-
-
-@app.route("/hello")
-def hello_world():
-    return render_template("hello-world.html")
 
 
 from routes import pages_routes
